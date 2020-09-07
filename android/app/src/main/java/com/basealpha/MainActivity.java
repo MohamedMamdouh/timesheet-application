@@ -1,4 +1,4 @@
-package com.timesheet;
+package com.basealpha;
 
 import com.facebook.react.ReactActivity;
 
