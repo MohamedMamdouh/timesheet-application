@@ -21,6 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+
 # Android/IntelliJ
 #
 build/
@@ -61,3 +62,5 @@ buck-out/
 # Misc
 #
 .env
+.env.staging
+.env.production
