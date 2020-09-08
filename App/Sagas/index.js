@@ -5,10 +5,14 @@ import DebugConfig from '../Config/DebugConfig';
 /* ------------- Types ------------- */
 
 import {StartupTypes} from '../Redux/StartupRedux';
+import {NewflowTypes} from '../Redux/NewFlowRedux';
+import {UserTypes} from '../Redux/UserRedux';
 
 /* ------------- Sagas ------------- */
 
 import {startup} from './StartupSagas';
+import {createNewFlow} from './NewFlowSaga';
+import {getUserData} from './UserSaga';
 
 /* ------------- API ------------- */
 
@@ -22,5 +26,7 @@ export default function* root() {
   yield all([
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
+    takeLatest(NewflowTypes.FLOW_REQUEST, createNewFlow, api),
+    takeLatest(UserTypes.USER_REQUEST, getUserData, api),
   ]);
 }
