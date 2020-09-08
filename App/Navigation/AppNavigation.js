@@ -1,7 +1,7 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import LaunchScreen from '../Containers/LaunchScreen';
-import CreateFormContainer from '../Containers/CreateFormContainer';
+import CreateNewFlow from '../Containers/CreateNewFlow';
 
 import styles from './Styles/NavigationStyles';
 
@@ -9,6 +9,7 @@ import styles from './Styles/NavigationStyles';
 const PrimaryNav = createStackNavigator(
   {
     LaunchScreen: {screen: LaunchScreen},
+    CreateNewFlow: {screen: CreateNewFlow},
   },
   {
     // Default config for all screens

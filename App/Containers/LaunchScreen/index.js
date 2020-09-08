@@ -6,6 +6,7 @@ import styles from './styles';
 
 export default class LaunchScreen extends Component {
   render() {
+    const {navigation} = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.titleContainer}>
@@ -15,7 +16,10 @@ export default class LaunchScreen extends Component {
           <Button success style={styles.button}>
             <Text>Select Existed project</Text>
           </Button>
-          <Button success style={styles.button}>
+          <Button
+            success
+            style={styles.button}
+            onPress={() => navigation.navigate('CreateNewFlow')}>
             <Text>Create new</Text>
           </Button>
         </View>
