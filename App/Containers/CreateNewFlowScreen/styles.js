@@ -6,4 +6,14 @@ export default StyleSheet.create({
     ...ApplicationStyles.screen.mainContainer,
     alignItems: 'center',
   },
+  stepperContainer: {
+    flex: 1,
+    width: '90%',
+  },
+  stepContainer: {
+    marginTop: '30%',
+  },
+  inputContainer: {
+    marginVertical: '10%',
+  },
 });

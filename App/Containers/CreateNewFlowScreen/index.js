@@ -36,11 +36,11 @@ const CreateNewFlowScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{flex: 1, width: '90%'}}>
+      <View style={styles.stepperContainer}>
         <ProgressSteps>
           <ProgressStep label="Create Project">
-            <View style={{marginTop: '30%'}}>
-              <Item success style={{marginVertical: '10%'}}>
+            <View style={styles.stepContainer}>
+              <Item success style={styles.inputContainer}>
                 <Input
                   placeholder="Project Title"
                   value={projectTitle}
@@ -50,15 +50,15 @@ const CreateNewFlowScreen = ({navigation}) => {
             </View>
           </ProgressStep>
           <ProgressStep label="Create Manager">
-            <View style={{marginTop: '30%'}}>
-              <Item success style={{marginVertical: '10%'}}>
+            <View style={styles.stepContainer}>
+              <Item success style={styles.inputContainer}>
                 <Input
                   placeholder="First Name"
                   value={managerFirstName}
                   onChangeText={(text) => setManagerFirstName(text)}
                 />
               </Item>
-              <Item success style={{marginVertical: '10%'}}>
+              <Item success style={styles.inputContainer}>
                 <Input
                   placeholder="Last Name"
                   value={managerLastName}
@@ -68,15 +68,15 @@ const CreateNewFlowScreen = ({navigation}) => {
             </View>
           </ProgressStep>
           <ProgressStep label="Create Employee" onSubmit={handleSubmit}>
-            <View style={{marginTop: '30%'}}>
-              <Item success style={{marginVertical: '10%'}}>
+            <View style={styles.stepContainer}>
+              <Item success style={styles.inputContainer}>
                 <Input
                   placeholder="First Name"
                   value={employeeFirstName}
                   onChangeText={(text) => serEmployeeFirstName(text)}
                 />
               </Item>
-              <Item success style={{marginVertical: '10%'}}>
+              <Item success style={styles.inputContainer}>
                 <Input
                   placeholder="Last Name"
                   value={employeeLastName}

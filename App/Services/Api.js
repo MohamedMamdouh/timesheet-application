@@ -50,6 +50,8 @@ const create = (baseURL = CONFIG.API_BASE_URL) => {
       projectTitle,
     });
 
+  const getUserData = (userId) => api.post('users/getuserbyid', {userId});
+
   // ------
   // STEP 3
   // ------
@@ -65,6 +67,7 @@ const create = (baseURL = CONFIG.API_BASE_URL) => {
   return {
     // a list of the API functions from step 2
     createNewFlow,
+    getUserData,
   };
 };
 
