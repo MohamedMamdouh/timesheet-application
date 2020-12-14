@@ -76,10 +76,10 @@ jobs:
           command: bundle install
           working_directory: ios
 
-      - save_cache:
-          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-          paths:
-            - vendor/bundle
+#       - save_cache:
+#           key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+#           paths:
+#             - vendor/bundle
 
       - save_cache:
           key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
