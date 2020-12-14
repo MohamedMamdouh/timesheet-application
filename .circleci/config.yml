@@ -98,10 +98,6 @@ jobs:
 
       - run: bundle install
 
-      - save_cache:
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
-          paths:
-            - vendor/bundle
 
 workflows:
   node-android-ios:
