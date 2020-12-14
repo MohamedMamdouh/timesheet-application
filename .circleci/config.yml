@@ -60,8 +60,8 @@ jobs:
           paths:
             - node_modules
 
-      - restore_cache:
-          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+#       - restore_cache:
+#           key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
 
       #Pods directory is ignored to match default RN setup, but can also check them into source control
       #https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
