@@ -48,7 +48,7 @@ jobs:
             ./gradlew :app:assembleDebugAndroidTest
 
       - store_artifacts:
-          path: ./android/app/build/apk/debug
+          path: ./app/build/apk/debug
           destination: app-debug.apk
 
 workflows:
