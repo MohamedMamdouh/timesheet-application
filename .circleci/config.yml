@@ -8,14 +8,6 @@ jobs:
     steps:
       - checkout
 
-      - run:
-        name: Download appcenter
-        command: sudo npm install appcenter-cli -g
-
-      - run:
-        name: Login
-        command: appcenter login --token 70601e491dc448064b71efa42fe9e2042735794c
-
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
@@ -38,6 +30,17 @@ jobs:
           root: ~/timesheet-application
           paths:
             - node_modules
+      
+  appcenter:
+    steps:
+      - run:
+        name: Download appcenter
+        command: sudo npm install appcenter-cli -g
+
+      - run:
+        name: Login
+        command: appcenter login --token 70601e491dc448064b71efa42fe9e2042735794c
+
 
   android-build-and-test:
     working_directory: ~/timesheet-application/android
@@ -66,6 +69,8 @@ workflows:
   node-android-ios:
     jobs:
       - node
+      -appcenter
       - android-build-and-test:
           requires:
             - node
+            - appcenter
