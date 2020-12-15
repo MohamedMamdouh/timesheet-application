@@ -48,7 +48,7 @@ jobs:
             ./gradlew :app:assembleDebugAndroidTest
 
       - store_artifacts:
-          path: output
+          path: ./build/outputs/apk/debug
 
 workflows:
   node-android-ios:
