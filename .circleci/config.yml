@@ -8,6 +8,14 @@ jobs:
     steps:
       - checkout
 
+      - run:
+        name: Download appcenter
+        command: sudo npm install appcenter-cli -g
+
+      - run:
+        name: Login
+        command: appcenter login --token 70601e491dc448064b71efa42fe9e2042735794c
+
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
@@ -46,6 +54,9 @@ jobs:
           command: |
             ./gradlew :app:assembleDebug
             ./gradlew :app:assembleDebugAndroidTest
+      - run:
+        name: Deliver to appcenter
+        command: appcenter distribute release --debug --app Mohamed Mamdouh/Time-Sheet-Android --file app/build/outputs/apk/debug/app-debug.apk --group "App Testers"
 
       - store_artifacts:
           path: app/build/outputs/apk/debug/
