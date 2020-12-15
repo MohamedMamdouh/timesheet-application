@@ -1,4 +1,3 @@
-
 version: 2.1
 jobs:
   node:
@@ -32,59 +31,6 @@ jobs:
           paths:
             - node_modules
 
-
-  macos-build-and-test:
-    working_directory: ~/timesheet-application
-    macos:
-      xcode: 11.3.0
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
-
-    steps:
-      - checkout
-      - restore_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
-
-      - restore_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-
-      - run: yarn install
-
-      - save_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
-          paths:
-            - ~/.cache/yarn
-
-      - save_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-          paths:
-            - node_modules
-
-      #Pods directory is ignored to match default RN setup, but can also check them into source control
-      #https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-      - restore_cache:
-          key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
-
-      - run: 
-          command: pod install
-          working_directory: ios
-
-      - run: 
-          command: bundle install
-          working_directory: ios
-
-      - save_cache:
-          key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
-          paths:
-            - ios/Pods
-
-      - store_artifacts:
-          path: output
-
-      - store_test_results:
-          path: output/scan
-
   android-build-and-test:
     working_directory: ~/timesheet-application/android
     docker:
@@ -96,16 +42,10 @@ jobs:
       - attach_workspace:
           at: ~/timesheet-application
 
-      - run: bundle install
-
-
 workflows:
   node-android-ios:
     jobs:
       - node
       - android-build-and-test:
-          requires:
-            - node
-      - macos-build-and-test:
           requires:
             - node
