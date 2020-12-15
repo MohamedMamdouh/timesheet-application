@@ -41,6 +41,11 @@ jobs:
 
       - attach_workspace:
           at: ~/timesheet-application
+      - run:
+          name: Build debug APK and release APK
+          command: |
+            ./gradlew :app:assembleDebug
+            ./gradlew :app:assembleDebugAndroidTest
 
 workflows:
   node-android-ios:
